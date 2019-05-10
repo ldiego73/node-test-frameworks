@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "scripts": {
+    "express": "autocannon -c 1000 -d 60 -p 10 127.0.0.1:3001",
+    "fastify": "autocannon -c 1000 -d 60 -p 10 127.0.0.1:3002",
+    "hapi": "autocannon -c 1000 -d 60 -p 10 127.0.0.1:3003",
+    "koa": "autocannon -c 1000 -d 60 -p 10 127.0.0.1:3004",
+    "restify": "autocannon -c 1000 -d 60 -p 10 127.0.0.1:3005"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "autocannon": "^3.2.1"
+  }
+}
