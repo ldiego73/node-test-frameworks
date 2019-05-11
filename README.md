@@ -21,7 +21,11 @@ sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 ### Ingresar a la instancia
 
 ```
-sudo ssh -i aws-key.pem ubuntu@54.212.118.128
+APIS
+sudo ssh -i aws-key.pem ubuntu@54.191.22.251
+
+TEST
+sudo ssh -i aws-key.pem ubuntu@54.203.0.105
 ```
 
 ### Iniciar servicios
