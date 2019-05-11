@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "@hapi/hapi": "^18.3.1",
-    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
     "yenv": "^2.1.0"
   }
 }

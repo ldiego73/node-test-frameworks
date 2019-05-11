@@ -1,16 +1,15 @@
-const util = require("util");
-const db = require("mysql");
+const db = require("mysql2");
 const yenv = require("yenv");
 
 const env = yenv();
 
 const pool = db.createPool({
-    connectionLimit: env.DATABASE.LIMIT,
     host: env.DATABASE.SERVER,
     database: env.DATABASE.NAME,
     user: env.DATABASE.USERNAME,
     password: env.DATABASE.PASSWORD,
-    waitForConnections: false
+    connectionLimit: env.DATABASE.LIMIT,
+    queueLimit: 0
 });
 
 pool.getConnection((err, connection) => {
@@ -27,10 +26,8 @@ pool.getConnection((err, connection) => {
     }
     console.log(`Connected as id ${connection.threadId}`);
 
-    if (connection) connection.release();
+    if (connection) pool.releaseConnection(connection);
     return;
 });
 
-pool.query = util.promisify(pool.query);
-
-module.exports = pool;
+module.exports = pool.promise();

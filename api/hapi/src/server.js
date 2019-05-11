@@ -11,16 +11,26 @@ const app = Hapi.server({
 app.route({
     method: "GET",
     path: "/",
-    handler: (req, reply) => {
-        return new Promise((resolve, reject) => {
-            db.query(
-                "SELECT * FROM employees LIMIT 1000",
-                (err, data, fields) => {
-                    if (err) reject(err);
-                    else resolve(data);
-                }
+    handler: async (req, reply) => {
+        try {
+            const [rows, fields] = await db.query(
+                "SELECT * FROM employees LIMIT 1000"
             );
-        });
+            let data = [];
+            for (let i = 0, t = rows.length; i < t; i += 1) {
+                data.push({
+                    id: rows[i].emp_no,
+                    nombres: rows[i].first_name,
+                    apellidos: rows[i].last_name,
+                    cumpleanios: new Date(rows[i].birth_date).getTime(),
+                    sexo: rows[i].gender,
+                    contratacion: new Date(rows[i].hire_date).getTime()
+                });
+            }
+            return data;
+        } catch (err) {
+            return err;
+        }
     }
 });
 

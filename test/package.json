@@ -2,11 +2,16 @@
   "name": "test",
   "version": "1.0.0",
   "scripts": {
-    "express": "autocannon -c 1000 -d 60 -p 10 54.212.118.128:3001",
-    "fastify": "autocannon -c 1000 -d 60 -p 10 54.212.118.128:3002",
-    "hapi": "autocannon -c 1000 -d 60 -p 10 54.212.118.128:3003",
-    "koa": "autocannon -c 1000 -d 60 -p 10 54.212.118.128:3004",
-    "restify": "autocannon -c 1000 -d 60 -p 10 54.212.118.128:3005"
+    "express_t1": "k6 run --vus 1000 --duration 60s -e PORT=3001 test.js",
+    "fastify_t1": "k6 run --vus 1000 --duration 60s -e PORT=3002 test.js",
+    "hapi_t1": "k6 run --vus 1000 --duration 60s -e PORT=3003 test.js",
+    "koa_t1": "k6 run --vus 1000 --duration 60s -e PORT=3004 test.js",
+    "restify_t1": "k6 run --vus 1000 --duration 60s -e PORT=3005 test.js",
+    "express_t2": "autocannon -c 1000 -d 60 54.191.22.251:3001",
+    "fastify_t2": "autocannon -c 1000 -d 60 54.191.22.251:3002",
+    "hapi_t2": "autocannon -c 1000 -d 60 54.191.22.251:3003",
+    "koa_t2": "autocannon -c 1000 -d 60 54.191.22.251:3004",
+    "restify_t2": "autocannon -c 1000 -d 60 54.191.22.251:3005"
   },
   "license": "MIT",
   "dependencies": {

@@ -27,10 +27,10 @@ sudo ssh -i aws-key.pem ubuntu@54.212.118.128
 ### Iniciar servicios
 
 ```
-pm2 start "npm start" --name "api-express"
-pm2 start "npm start" --name "api-fastify"
-pm2 start "npm start" --name "api-hapi"
-pm2 start "npm start" --name "api-koa"
-pm2 start "npm start" --name "api-restify"
+pm2 start src/server.js --name "api-express" -i max
+pm2 start src/server.js --name "api-fastify" -i max
+pm2 start src/server.js --name "api-hapi" -i max
+pm2 start src/server.js --name "api-koa" -i max
+pm2 start src/server.js --name "api-restify" -i max
 
 ```
